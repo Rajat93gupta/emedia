@@ -1,11 +1,10 @@
-import Header from "@/component/Header";
+
+import Login from "./login/page";
 
 export default function Home() {
   return (
     <div>
-     <Header/>
-     
-     
+     <Login/>
     </div>
   );
 }
