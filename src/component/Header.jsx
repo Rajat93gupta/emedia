@@ -109,7 +109,10 @@ const Header = ({ onMenuToggle }) => {
             <Link href="/blog">
                 <MenuItem onClick={handleMenuClose}>Blogs</MenuItem>
             </Link>
+            <Link href="/">
             <MenuItem onClick={handleMenuClose}>Videos</MenuItem>
+            </Link>
+
         </Menu>
     );
 
@@ -192,17 +195,16 @@ const Header = ({ onMenuToggle }) => {
                         </IconButton>
 
                     }
-                    <Box
-                        component="img"
-                        src="/logo.png"
-                        width="92px"
-                        height="42px"
-                        sx={{
-                            marginLeft: "10px"
-                        }}
-                    >
-                    </Box>
-                    <Search sx={{borderRadius:"20px"}}>
+                    <Link href="/" underline="none">
+                        <Box
+                            component="img"
+                            src="/logo.png"
+                            width="92px"
+                            height="42px"
+                            sx={{ marginLeft: "10px" }}
+                        />
+                    </Link>
+                    <Search sx={{ borderRadius: "20px" }}>
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>
