@@ -156,12 +156,12 @@ const Header = ({ onMenuToggle }) => {
                     >
                         <TextField sx={{
                             "& .MuiOutlinedInput-root": {
-                                outline:"none",
+                                outline: "none",
                                 "& fieldset": {
                                     borderColor: "#0f0f0f", // Default border color
                                 },
                                 "&:hover fieldset": {
-                                    borderColor: "#0f0f0f", 
+                                    borderColor: "#0f0f0f",
                                 },
                                 "&.Mui-focused fieldset": {
                                     borderColor: "#0f0f0f", // Border color on focus
@@ -205,7 +205,7 @@ const Header = ({ onMenuToggle }) => {
                             </Box>
                         </Link>
 
-                        <Link href="/blog">
+                        <Link href="/shorts">
                             <Box
                                 sx={{
                                     display: "flex",
