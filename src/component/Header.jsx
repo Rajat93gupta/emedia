@@ -192,14 +192,17 @@ const Header = ({ onMenuToggle }) => {
                         </IconButton>
 
                     }
-
-
-                    <Typography sx={{
-                        pl:3
-                    }} variant="h6" noWrap component="div">
-                        E-MEDIA
-                    </Typography>
-                    <Search>
+                    <Box
+                        component="img"
+                        src="/logo.png"
+                        width="92px"
+                        height="42px"
+                        sx={{
+                            marginLeft: "10px"
+                        }}
+                    >
+                    </Box>
+                    <Search sx={{borderRadius:"20px"}}>
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>
