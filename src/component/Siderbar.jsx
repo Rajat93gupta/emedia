@@ -125,7 +125,9 @@ export default function Sidebar() {
           sx={{
             "& .MuiDrawer-paper": {
               zIndex: 12, 
+              borderRight:0
             },
+            border:0
           }}
           variant="permanent"
           open={open}
@@ -249,7 +251,7 @@ export default function Sidebar() {
             </ListItem>
           </List>
         </Drawer>
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Box component="main" sx={{ flexGrow: 1, bgcolor:"rgb(248,249,250)"}}>
           {menuData === "BlogSection" && <BlogSection />}
           {menuData === "Shorts" && <Shorts />}
         </Box>

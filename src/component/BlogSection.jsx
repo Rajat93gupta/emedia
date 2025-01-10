@@ -21,7 +21,16 @@ const BlogSection = () => {
   return (
     <>
       <Box height={60} />
-      <Grid container spacing={2}>
+      <Box sx={{
+        bgcolor: "#2b2b2b",
+        color:"#fff",
+        p:6
+      }}>
+        <Typography variant="h2">Our stories</Typography>
+        <Typography variant="h4">We create
+          AWESOME Blog</Typography>
+      </Box>
+      <Grid container spacing={2} sx={{ p: 3 }}>
         <Grid
           size={{ md: 8, xs: 12 }}
           sx={{
@@ -168,18 +177,18 @@ const BlogSection = () => {
           }
 
           {/*  News letter */}
-          <Typography variant="h5" sx={{ my: 3, px:1 }}>News Letter</Typography>
+          <Typography variant="h5" sx={{ my: 3, px: 1 }}>News Letter</Typography>
           <Box sx={{
-            display:"flex",
-            flexDirection:'column',
-            p:2,
-            bgcolor:"#fff",
-            borderRadius:"20px"
+            display: "flex",
+            flexDirection: 'column',
+            p: 2,
+            bgcolor: "#fff",
+            borderRadius: "20px"
           }}>
-            <Typography variant="h4" sx={{my:1}}>Join our Newsletter</Typography>
-            <Typography sx={{my:3}}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit ipsum quo nihil ipsam sapiente. Suscipit, rerum!</Typography>
-            <TextField placeholder="Your Email Adddress"/>
-            <Button variant="contained" sx={{my:2}}>Click Here</Button>
+            <Typography variant="h4" sx={{ my: 1 }}>Join our Newsletter</Typography>
+            <Typography sx={{ my: 3 }}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit ipsum quo nihil ipsam sapiente. Suscipit, rerum!</Typography>
+            <TextField placeholder="Your Email Adddress" />
+            <Button variant="contained" sx={{ my: 2 }}>Click Here</Button>
           </Box>
 
         </Grid>
