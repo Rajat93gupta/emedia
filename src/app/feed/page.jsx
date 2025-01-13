@@ -7,6 +7,8 @@ import {
     IconButton,
     TextField,
     Button,
+    Menu,
+    MenuItem,
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -20,6 +22,7 @@ const Feed = () => {
     const [newPostImage, setNewPostImage] = useState(null);
     const [commentInputs, setCommentInputs] = useState({});
     const [commentVisibility, setCommentVisibility] = useState({});
+    const [menuAnchor, setMenuAnchor] = useState({});
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
@@ -75,6 +78,14 @@ const Feed = () => {
             ...prev,
             [index]: !prev[index],
         }));
+    };
+
+    const handleMenuOpen = (event, index) => {
+        setMenuAnchor((prev) => ({ ...prev, [index]: event.currentTarget }));
+    };
+
+    const handleMenuClose = (index) => {
+        setMenuAnchor((prev) => ({ ...prev, [index]: null }));
     };
 
     return (
@@ -165,9 +176,17 @@ const Feed = () => {
                             <Avatar alt="User Avatar" />
                             <Typography sx={{ fontWeight: "bold" }}>Username</Typography>
                         </Box>
-                        <IconButton>
+                        <IconButton onClick={(e) => handleMenuOpen(e, index)}>
                             <MoreVertIcon />
                         </IconButton>
+                        <Menu
+                            anchorEl={menuAnchor[index]}
+                            open={Boolean(menuAnchor[index])}
+                            onClose={() => handleMenuClose(index)}
+                        >
+                            <MenuItem onClick={() => handleMenuClose(index)}>Interested</MenuItem>
+                            <MenuItem onClick={() => handleMenuClose(index)}>Uninterested</MenuItem>
+                        </Menu>
                     </Box>
 
                     {/* Post Content */}
@@ -212,7 +231,7 @@ const Feed = () => {
                     {commentVisibility[index] && (
                         <Box sx={{ marginTop: "10px" }}>
                             {post.comments.map((comment, i) => (
-                                <Typography key={i} sx={{ fontSize: "14px", marginBottom: "5px" }}>
+                                <Typography key={i} sx={{ fontSize: "18px", marginBottom: "5px" }}>
                                     {comment}
                                 </Typography>
                             ))}
@@ -225,19 +244,10 @@ const Feed = () => {
                                     sx={{
                                         "& .MuiOutlinedInput-root": {
                                             padding: "0px",
-                                            "& fieldset": {
-                                                border: "none",
-                                            },
-                                            "&:hover fieldset": {
-                                                border: "none",
-                                            },
-                                            "&.Mui-focused fieldset": {
-                                                border: "none",
-                                            },
+                                            "& fieldset": { border: "none" },
                                         },
                                     }}
                                 />
-
                                 <Button
                                     variant="contained"
                                     size="small"
