@@ -534,7 +534,8 @@ const Header = ({ onMenuToggle }) => {
                             <MenuIcon />
                         </IconButton>
 
-                    }
+                    
+)}
                     <Link href="/" underline="none">
                         <Box
                             component="img"
