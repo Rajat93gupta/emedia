@@ -25,13 +25,18 @@ const BlogSection = () => {
       <Box sx={{
         bgcolor: "#2b2b2b",
         color: "#fff",
-        p: 6
+        p: 6,
+        maxHeight:"300px",
+        height:"100%",
+        display:"flex",
+        justifyContent:"center",
+        flexDirection:"column"
       }}>
-        <Typography variant="h2">Our stories</Typography>
-        <Typography variant="h4">We create
+        <Typography variant="h5">Our stories</Typography>
+        <Typography fontWeight={600} variant="h3">WE CREATE<br/>
           AWESOME Blog</Typography>
       </Box>
-      <Grid container spacing={2} sx={{ p: 3 }}>
+      <Grid container spacing={2} sx={{ p: 3 , bgcolor:"White"}}>
         <Grid
           size={{ md: 8, xs: 12 }}
           sx={{
@@ -42,7 +47,7 @@ const BlogSection = () => {
 
           {currentPosts?.slice(0, 4)?.map((item) => (
             <Link key={item.id} href={`/blog/${item.id}`} passHref>
-              <Box sx={{ mb: 4, display: "flex" }}>
+              <Box sx={{ mb: 4, display: "flex", flexDirection:{md:"row", xs:"column"} }}>
                 <Grid size={{ md: 6, xs: 12 }}>
                   <Box
                     component="img"
