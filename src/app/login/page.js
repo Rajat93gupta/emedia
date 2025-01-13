@@ -1,71 +1,74 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import {
   Box,
   TextField,
   Button,
   Typography,
+  Grid,
   useTheme,
-} from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Grid2 from '@mui/material/Grid2';
+} from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
 export default function Login() {
   const customTheme = useTheme();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-   
     if (email && password) {
-      window.location.href = '/dashboard'; 
+      window.location.href = "/dashboard";
     } else {
-      alert('Please fill out all fields');
+      alert("Please fill out all fields");
     }
   };
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid2
+      <Grid
         container
         style={{
-          height: '100vh',
-          width: '100vw',
+          height: "100vh",
+          width: "100vw",
+          overflow: "hidden",
         }}
       >
-        <Grid2
-          size={{ xs: 12, md: 6 }}
-          sx={{ height: "100vh" }}
-        >
-          <Box 
+        {/* Image Section */}
+        <Grid item xs={12} md={6}>
+          <Box
             component="img"
-            src='/cover.png'
-            sx={{ height: "100%", width: "100%" }}
+            src="/cover.png"
+            sx={{ height: "100%", width: "100%", objectFit: "cover" }}
           />
-        </Grid2>
-        <Grid2
-          size={{ xs: 12, md: 6 }}
+        </Grid>
+
+        {/* Form Section */}
+        <Grid
+          item
+          xs={12}
+          md={6}
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <Box
             component="form"
             noValidate
             autoComplete="off"
-            onSubmit={handleSubmit} 
-            style={{ width: '100%', maxWidth: '400px' }}
+            onSubmit={handleSubmit}
+            style={{ width: "100%", maxWidth: "400px" }}
           >
-            <Box component="div"
-              sx={{ display: "flex", alignItems: 'center', gap: "10px", marginBottom: "20px" }}
+            {/* Logo */}
+            <Box
+              component="div"
+              sx={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}
             >
               <Box
                 component="img"
@@ -75,25 +78,28 @@ export default function Login() {
               />
             </Box>
 
+            {/* Email Field */}
             <TextField
-              label="email"
+              label="Email"
               variant="outlined"
               fullWidth
               margin="normal"
               InputProps={{
                 sx: {
                   '&::placeholder': {
-                    color: 'transparent', 
+                    color: 'transparent',
                   },
                 },
               }}
               InputLabelProps={{
-                shrink: true, 
+                shrink: true,
               }}
               onChange={(e) => setEmail(e.target.value)}
             />
+
+            {/* Password Field */}
             <TextField
-              label="password"
+              label="Password"
               type="password"
               variant="outlined"
               fullWidth
@@ -101,34 +107,34 @@ export default function Login() {
               InputProps={{
                 sx: {
                   '&::placeholder': {
-                    color: 'transparent', 
+                    color: 'transparent',
                   },
                 },
               }}
               InputLabelProps={{
-                shrink: true, 
+                shrink: true,
               }}
               onChange={(e) => setPassword(e.target.value)}
             />
+
+            {/* Submit Button */}
             <Button
               type="submit"
               variant="contained"
               color="primary"
               fullWidth
-              style={{ marginTop: '1rem' }}
+              style={{ marginTop: "1rem" }}
             >
               Sign In
             </Button>
 
-            <Typography
-              variant="body2"
-              style={{ marginTop: '1rem', textAlign: 'center' }}
-            >
+            {/* Sign Up Link */}
+            <Typography variant="body2" style={{ marginTop: "1rem", textAlign: "center" }}>
               Don't have an account? <a href="#">Sign Up</a>
             </Typography>
           </Box>
-        </Grid2>
-      </Grid2>
+        </Grid>
+      </Grid>
     </ThemeProvider>
   );
 }
