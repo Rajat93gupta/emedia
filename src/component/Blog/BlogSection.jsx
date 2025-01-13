@@ -6,6 +6,7 @@ import { RecentPost } from "@/utils/RecentPost";
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { tags } from "@/utils/RecentPost";
+import Link from "next/link";
 const BlogSection = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 4;
@@ -23,8 +24,8 @@ const BlogSection = () => {
       <Box height={60} />
       <Box sx={{
         bgcolor: "#2b2b2b",
-        color:"#fff",
-        p:6
+        color: "#fff",
+        p: 6
       }}>
         <Typography variant="h2">Our stories</Typography>
         <Typography variant="h4">We create
@@ -38,84 +39,88 @@ const BlogSection = () => {
             flexDirection: "column"
           }}
         >
-          {currentPosts?.slice(0, 4)?.map((item) => (
-            <Box key={item.id} sx={{ mb: 4, display: "flex" }}>
-              <Grid size={{ md: 6, xs: 12 }}>
-                <Box
-                  component="img"
-                  src={item.image} // Dynamic image source
-                  sx={{
-                    height: "300px",
-                    width: "100%",
-                    maxWidth: "400px",
-                    borderRadius: "20px",
-                  }}
-                />
-              </Grid>
-              <Grid
-                size={{ md: 6, xs: 12 }}
-                sx={{
-                  p: 2,
 
-                }}
-              >
-                <Typography
-                  component="span"
+          {currentPosts?.slice(0, 4)?.map((item) => (
+            <Link key={item.id} href={`/blog/${item.id}`} passHref>
+              <Box sx={{ mb: 4, display: "flex" }}>
+                <Grid size={{ md: 6, xs: 12 }}>
+                  <Box
+                    component="img"
+                    src={item.image}
+                    sx={{
+                      height: "300px",
+                      width: "100%",
+                      maxWidth: "400px",
+                      borderRadius: "20px",
+                    }}
+                  />
+                </Grid>
+                <Grid
+                  size={{ md: 6, xs: 12 }}
                   sx={{
-                    display: "inline-block",
-                    background: "#e8e8e8",
-                    p: 1,
-                    borderRadius: "20px",
+                    p: 2,
+
                   }}
                 >
-                  Design
-                </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    fontWeight: "600",
-                    my: 2,
-                  }}
-                >
-                  {item.description} {/* Dynamic description */}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: "1rem",
-                    my: 2,
-                  }}
-                >
-                  {item.descritpion} {/* Dynamic content */}
-                </Typography>
-                <Divider />
-                <Box
-                  component="div"
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    my: 3,
-                  }}
-                >
+                  <Typography
+                    component="span"
+                    sx={{
+                      display: "inline-block",
+                      background: "#e8e8e8",
+                      p: 1,
+                      borderRadius: "20px",
+                    }}
+                  >
+                    Design
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: "600",
+                      my: 2,
+                    }}
+                  >
+                    {item.description} {/* Dynamic description */}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "1rem",
+                      my: 2,
+                    }}
+                  >
+                    {item.descritpion} {/* Dynamic content */}
+                  </Typography>
+                  <Divider />
                   <Box
                     component="div"
                     sx={{
                       display: "flex",
-                      gap: 3,
+                      justifyContent: "space-between",
+                      my: 3,
                     }}
                   >
-                    <Box component="img" src={item.userimage} sx={{ width: 40, height: 40, borderRadius: "50%" }} />
-                    <Box>
-                      <Typography>{item.author}</Typography>
-                      <Typography>{item.time}</Typography>
+                    <Box
+                      component="div"
+                      sx={{
+                        display: "flex",
+                        gap: 3,
+                      }}
+                    >
+                      <Box component="img" src={item.userimage} sx={{ width: 40, height: 40, borderRadius: "50%" }} />
+                      <Box>
+                        <Typography>{item.author}</Typography>
+                        <Typography>{item.time}</Typography>
+                      </Box>
                     </Box>
+                    <Typography component="a" href="#" sx={{ cursor: "pointer" }}>
+                      Read More
+                    </Typography>
                   </Box>
-                  <Typography component="a" href="#" sx={{ cursor: "pointer" }}>
-                    Read More
-                  </Typography>
-                </Box>
-              </Grid>
-            </Box>
+                </Grid>
+              </Box>
+            </Link>
           ))}
+
         </Grid>
 
         <Grid size={{ md: 4, xs: 12 }}>
@@ -124,8 +129,11 @@ const BlogSection = () => {
             Recent Post
           </Typography>
           {RecentPost.slice(0, 5).map((post) => (
+            <Link key={post.id} href={`/blog/${post.id}`} passHref>
+
+         
             <Box
-              key={post.id}
+              
               component="div"
               sx={{
                 display: "flex",
@@ -154,6 +162,7 @@ const BlogSection = () => {
                 <Typography>{post.time}</Typography>
               </Box>
             </Box>
+            </Link>
           ))}
           {/*  Categories */}
           <Typography variant="h5" sx={{ my: 2 }}>Categories</Typography>
@@ -182,7 +191,7 @@ const BlogSection = () => {
             display: "flex",
             flexDirection: 'column',
             p: 2,
-            bgcolor: "#fff",
+            bgcolor: "#f3f2f2",
             borderRadius: "20px"
           }}>
             <Typography variant="h4" sx={{ my: 1 }}>Join our Newsletter</Typography>

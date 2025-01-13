@@ -15,11 +15,11 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
-import BlogSection from "./BlogSection";
+import BlogSection from "./Blog/BlogSection";
 import Shorts from "./Shorts";
-
-import Header from "./Header";
-
+import Header from "./Header/Header";
+import { useRouter } from "next/router";
+import { useParams } from "next/navigation";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -48,32 +48,32 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
+
   ...theme.mixins.toolbar,
 }));
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  variants: [
-    {
-      props: ({ open }) => open,
-      style: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(["width", "margin"], {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.enteringScreen,
-        }),
-      },
-    },
-  ],
-}));
+// const AppBar = styled(MuiAppBar, {
+//   shouldForwardProp: (prop) => prop !== "open",
+// })(({ theme }) => ({
+//   zIndex: theme.zIndex.drawer + 1,
+//   transition: theme.transitions.create(["width", "margin"], {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.leavingScreen,
+//   }),
+//   variants: [
+//     {
+//       props: ({ open }) => open,
+//       style: {
+//         marginLeft: drawerWidth,
+//         width: `calc(100% - ${drawerWidth}px)`,
+//         transition: theme.transitions.create(["width", "margin"], {
+//           easing: theme.transitions.easing.sharp,
+//           duration: theme.transitions.duration.enteringScreen,
+//         }),
+//       },
+//     },
+//   ],
+// }));
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -104,6 +104,10 @@ export default function Sidebar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [menuData, setMenuData] = React.useState("BlogSection");
+  const router = useParams();
+  // const { id } = router.query;
+  console.log(router);
+  
 
   
 
@@ -251,9 +255,14 @@ export default function Sidebar() {
             </ListItem>
           </List>
         </Drawer>
-        <Box component="main" sx={{ flexGrow: 1, bgcolor:"rgb(248,249,250)"}}>
+        <Box component="main" sx={{ flexGrow: 1, bgcolor:"white"}}>
+          {
+
+          }
           {menuData === "BlogSection" && <BlogSection />}
           {menuData === "Shorts" && <Shorts />}
+         
+          
         </Box>
       </Box>
     </>

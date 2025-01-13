@@ -19,7 +19,7 @@ import Link from "next/link";
 import DriveFileRenameOutlineSharpIcon from "@mui/icons-material/DriveFileRenameOutlineSharp";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AppBar from "@mui/material/AppBar";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { Divider, TextField } from "@mui/material";
@@ -186,7 +186,7 @@ const Header = ({ onMenuToggle }) => {
                                 <IconButton size="large" color="inherit">
                                     <EventIcon />
                                 </IconButton>
-                                <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
+                                <Box onClick={handleMenuClose} sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
                                     <MenuItem
                                         sx={{
                                             padding: 0,
@@ -220,7 +220,7 @@ const Header = ({ onMenuToggle }) => {
                                 <IconButton size="large" color="inherit">
                                     <EventIcon />
                                 </IconButton>
-                                <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
+                                <Box onClick={handleMenuClose} sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
                                     <MenuItem
                                         sx={{
                                             padding: 0,
@@ -253,7 +253,7 @@ const Header = ({ onMenuToggle }) => {
                                 <IconButton size="large" color="inherit">
                                     <EventIcon />
                                 </IconButton>
-                                <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
+                                <Box onClick={handleMenuClose} sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
                                     <MenuItem
                                         sx={{
                                             padding: 0,
@@ -506,9 +506,11 @@ const Header = ({ onMenuToggle }) => {
         </Menu>
     );
     const pathname = usePathname();
-
-    const showHeader = pathname !== "/dashboard";
-
+    const id = useParams()
+    const router = id.singleBlog
+    // console.log(id.singleBlog);
+    
+    const showHeader = pathname !== "/dashboard" && pathname !== `/blog/${router}`;
     return (
         <div>
             <AppBar
@@ -530,17 +532,18 @@ const Header = ({ onMenuToggle }) => {
                         >
                             <MenuIcon />
                         </IconButton>
+
                     )}
-                    <Box
-                        component="img"
-                        src="/logo.png"
-                        width="92px"
-                        height="42px"
-                        sx={{
-                            marginLeft: "10px",
-                        }}
-                    ></Box>
-                    <Search sx={{ borderRadius: "20px", border: "1px solid #f0f0f0" }}>
+                    <Link href="/dashboard" underline="none">
+                        <Box
+                            component="img"
+                            src="/logo.png"
+                            width="92px"
+                            height="42px"
+                            sx={{ marginLeft: "10px" }}
+                        />
+                    </Link>
+                    <Search sx={{ borderRadius: "20px" }}>
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>

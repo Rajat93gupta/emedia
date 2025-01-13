@@ -1,7 +1,7 @@
 "use client";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/component/Header";
+import Header from "@/component/Header/Header";
 import { usePathname } from "next/navigation";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 
