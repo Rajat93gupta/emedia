@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
   const [open, setOpen] = React.useState(false);
 
   // Hide Sidebar and Header on "/" (home) and Sidebar only on "/dashboard"
-  const hideSidebar = pathname === "/dashboard";
+  const hideSidebar = pathname.startsWith("/dashboard") || pathname.startsWith("/blog/");
   const hideHeaderAndSidebar = pathname === "/";
 
   const handleMenuToggle = () => {

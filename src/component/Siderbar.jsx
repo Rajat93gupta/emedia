@@ -4,6 +4,7 @@ import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
@@ -15,9 +16,10 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
-
+import SlowMotionVideoSharpIcon from '@mui/icons-material/SlowMotionVideoSharp';
 import Header from "./Header/Header";
 import { useRouter } from "next/navigation";
+import AssistantIcon from '@mui/icons-material/Assistant';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -154,7 +156,7 @@ export default function Sidebar({open,setOpen, handleDrawerClose, handleMenuTogg
                         },
                   ]}
                 >
-                  <MailIcon />
+                  <LibraryBooksIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="BlogSection"
@@ -205,7 +207,7 @@ export default function Sidebar({open,setOpen, handleDrawerClose, handleMenuTogg
                         },
                   ]}
                 >
-                  <MailIcon />
+                  <SlowMotionVideoSharpIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Shorts"
@@ -256,7 +258,7 @@ export default function Sidebar({open,setOpen, handleDrawerClose, handleMenuTogg
                         },
                   ]}
                 >
-                  <MailIcon />
+                  <AssistantIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Feed"

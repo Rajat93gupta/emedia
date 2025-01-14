@@ -1,10 +1,14 @@
 "use client";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Divider, Typography } from "@mui/material";
 import React from "react";
 import { RecentPost } from "@/utils/RecentPost";
 import { useParams } from "next/navigation";
 import RecentBlogs from "@/component/Blog/RecentBlogs";
-
+import ThumbUpAltSharpIcon from '@mui/icons-material/ThumbUpAltSharp';
+import MessageSharpIcon from '@mui/icons-material/MessageSharp';
+import TurnedInSharpIcon from '@mui/icons-material/TurnedInSharp';
+import IosShareSharpIcon from '@mui/icons-material/IosShareSharp';
+import MoreHorizSharpIcon from '@mui/icons-material/MoreHorizSharp';
 const SingleBlog = () => {
   const id = useParams();
   const singleId = id.singleBlog;
@@ -45,7 +49,7 @@ const SingleBlog = () => {
                 />
               </Box>
               <Box sx={{ px: { md: "10rem" }, mt: 3 }}>
-                <Typography
+                {/* <Typography
                   component="span"
                   sx={{
                     display: "inline-block",
@@ -55,7 +59,7 @@ const SingleBlog = () => {
                   }}
                 >
                   Design
-                </Typography>
+                </Typography> */}
                 <Typography
                   sx={{ fontWeight: 600 }}
                   variant="h4"
@@ -63,12 +67,38 @@ const SingleBlog = () => {
                 >
                   Creating an Awesome WordPress Theme
                 </Typography>
+                
                 <Typography component="span">
                   {item.author} || {item.time}
                 </Typography>
-                <Typography variant="body1" component="p" sx={{ my: 4 }}>
+                <Box sx={{my:1}}>
+                  <Divider/>
+                  {/* <Typography variant="body1" component="p" sx={{ my: 1 }}>
                   Welcome to WordPress. This is your first
-                </Typography>
+                </Typography> */}
+                <Box component="div" sx={{display:"flex",my:2, justifyContent:"space-between"}}>
+                  <Box component="div" sx={{
+                    display:"flex",
+                    gap:"40px"
+                  }}>
+                    <Box component="span" sx={{display:"flex", cursor:"pointer"}}> <ThumbUpAltSharpIcon/>  <span style={{paddingLeft:"10px"}}>1.7K</span></Box>
+                    <Box component="span" sx={{display:"flex", cursor:"pointer"}}> <MessageSharpIcon/> <span style={{paddingLeft:"10px"}}>10</span></Box>
+                   
+
+                  </Box>
+                  <Box component="div" sx={{
+                    display:"flex",
+                    gap:"20px"
+                  }}>
+                  <Box component="span" sx={{display:"flex", cursor:"pointer"}}> <TurnedInSharpIcon/></Box>
+                    <Box component="span" sx={{display:"flex", cursor:"pointer"}}> <IosShareSharpIcon/></Box>
+                    <Box component="span" sx={{display:"flex", cursor:"pointer"}}> <MoreHorizSharpIcon/></Box>
+                  </Box>
+
+                </Box>
+                  <Divider/>
+                </Box>
+               
                 <Typography
                   variant="h4"
                   component="h4"

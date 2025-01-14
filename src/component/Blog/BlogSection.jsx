@@ -117,7 +117,7 @@ const BlogSection = () => {
                         <Typography>{item.time}</Typography>
                       </Box>
                     </Box>
-                    <Typography component="a" href="#" sx={{ cursor: "pointer" }}>
+                    <Typography component="span" href="#" sx={{ cursor: "pointer" }}>
                       Read More
                     </Typography>
                   </Box>

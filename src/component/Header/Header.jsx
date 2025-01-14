@@ -521,7 +521,8 @@ const Header = ({ onMenuToggle }) => {
                     px: !showHeader ? 10 : 2,
                     bgcolor: "white",
                     color: 'black',
-                    boxShadow: "none"
+                    // boxShadow: 0.9
+                    boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px"
                 }}
                 position="fixed"
             >

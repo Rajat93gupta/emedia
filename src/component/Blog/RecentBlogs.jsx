@@ -18,15 +18,6 @@ const RecentBlogs = () => {
 
     },
     {
-      id: 1,
-      image: "https://images.unsplash.com/photo-1557800636-894a64c1696f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-      description: "UI vs. UX: What’s the difference?",
-      time: "9 August 2022",
-      userimage: userimage,
-      author: "Mad Sparrow",
-
-    },
-    {
       id: 2,
       image: "https://images.unsplash.com/photo-1557800636-894a64c1696f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
       description: "UI vs. UX: What’s the difference?",
@@ -43,14 +34,23 @@ const RecentBlogs = () => {
       userimage: userimage,
       author: "Mad Sparrow",
 
+    },
+    {
+      id: 4,
+      image: "https://images.unsplash.com/photo-1557800636-894a64c1696f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+      description: "UI vs. UX: What’s the difference?",
+      time: "9 August 2022",
+      userimage: userimage,
+      author: "Mad Sparrow",
+
     }
 
   ]
   return (
     <>
-    <Typography variant='h5' sx={{px:"40px", mt:5}}>Recent Post</Typography>
+    <Typography variant='h5' sx={{px:"60px", mt:5}}>Recent Post</Typography>
    
-      <Box sx={{ display: "flex", justifyContent: { md: "center" }, gap: "20px", flexWrap: "wrap", p: 2 }}>
+      <Box sx={{ display: "flex", justifyContent: { md: "center" }, gap: "12px", flexWrap: "wrap", p: 2 }}>
       
         {
           Blogs.map((blogs) => (
