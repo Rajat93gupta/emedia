@@ -19,7 +19,7 @@ import Link from "next/link";
 import DriveFileRenameOutlineSharpIcon from "@mui/icons-material/DriveFileRenameOutlineSharp";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AppBar from "@mui/material/AppBar";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { Divider, TextField } from "@mui/material";
@@ -156,12 +156,12 @@ const Header = ({ onMenuToggle }) => {
                     >
                         <TextField sx={{
                             "& .MuiOutlinedInput-root": {
-                                outline:"none",
+                                outline: "none",
                                 "& fieldset": {
                                     borderColor: "#0f0f0f", // Default border color
                                 },
                                 "&:hover fieldset": {
-                                    borderColor: "#0f0f0f", 
+                                    borderColor: "#0f0f0f",
                                 },
                                 "&.Mui-focused fieldset": {
                                     borderColor: "#0f0f0f", // Border color on focus
@@ -186,7 +186,7 @@ const Header = ({ onMenuToggle }) => {
                                 <IconButton size="large" color="inherit">
                                     <EventIcon />
                                 </IconButton>
-                                <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
+                                <Box onClick={handleMenuClose} sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
                                     <MenuItem
                                         sx={{
                                             padding: 0,
@@ -205,7 +205,7 @@ const Header = ({ onMenuToggle }) => {
                             </Box>
                         </Link>
 
-                        <Link href="/blog">
+                        <Link href="/shorts">
                             <Box
                                 sx={{
                                     display: "flex",
@@ -220,7 +220,7 @@ const Header = ({ onMenuToggle }) => {
                                 <IconButton size="large" color="inherit">
                                     <EventIcon />
                                 </IconButton>
-                                <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
+                                <Box onClick={handleMenuClose} sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
                                     <MenuItem
                                         sx={{
                                             padding: 0,
@@ -253,7 +253,7 @@ const Header = ({ onMenuToggle }) => {
                                 <IconButton size="large" color="inherit">
                                     <EventIcon />
                                 </IconButton>
-                                <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
+                                <Box onClick={handleMenuClose} sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
                                     <MenuItem
                                         sx={{
                                             padding: 0,
@@ -509,9 +509,11 @@ const Header = ({ onMenuToggle }) => {
         </Menu>
     );
     const pathname = usePathname();
-
-    const showHeader = pathname !== "/dashboard";
-
+    const id = useParams()
+    const router = id.singleBlog
+    // console.log(id.singleBlog);
+    
+    const showHeader = pathname !== "/dashboard" && pathname !== `/blog/${router}`;
     return (
         <div>
             <AppBar
@@ -534,9 +536,8 @@ const Header = ({ onMenuToggle }) => {
                             <MenuIcon />
                         </IconButton>
 
-                    
-)}
-                    <Link href="/" underline="none">
+                    )}
+                    <Link href="/dashboard" underline="none">
                         <Box
                             component="img"
                             src="/logo.png"

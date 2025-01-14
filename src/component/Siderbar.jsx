@@ -15,11 +15,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
-import BlogSection from "./BlogSection";
-import Shorts from "./Shorts";
 
-import Header from "./Header";
-
+import Header from "./Header/Header";
+import { useRouter } from "next/navigation";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -48,32 +46,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
+
   ...theme.mixins.toolbar,
 }));
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  variants: [
-    {
-      props: ({ open }) => open,
-      style: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(["width", "margin"], {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.enteringScreen,
-        }),
-      },
-    },
-  ],
-}));
+
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -100,39 +77,34 @@ const Drawer = styled(MuiDrawer, {
   ],
 }));
 
-export default function Sidebar() {
+export default function Sidebar({open,setOpen, handleDrawerClose, handleMenuToggle}) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const [menuData, setMenuData] = React.useState("BlogSection");
-
-  
-
-  
-  const handleMenuToggle = () => {
-    setOpen(!open);
-  };
-
-  const handleDrawerClose = () => {
+  // const router = useParams();
+  const router = useRouter();
+  const navigateTo = (path) => {
+    router.push(path); 
     setOpen(false);
   };
 
+
   return (
     <>
-      <Box sx={{ display:"flex" }}>
+      <Box >
         <CssBaseline />
         <Header onMenuToggle={handleMenuToggle} />
         <Drawer
           sx={{
             "& .MuiDrawer-paper": {
               zIndex: 12, 
-              borderRight:0
+              // borderRight:0,
+              mt:8
             },
             border:0
           }}
           variant="permanent"
           open={open}
         >
-          <DrawerHeader
+          {/* <DrawerHeader
             sx={{
               zIndex: "-1",
             }}
@@ -144,11 +116,11 @@ export default function Sidebar() {
                 <ChevronLeftIcon />
               )}
             </IconButton>
-          </DrawerHeader>
+          </DrawerHeader> */}
           <Divider />
           <List>
             <ListItem
-              onClick={() => setMenuData("BlogSection")}
+              onClick={() => navigateTo("/blog")}
               disablePadding
               sx={{ display: "block" }}
             >
@@ -199,7 +171,7 @@ export default function Sidebar() {
               </ListItemButton>
             </ListItem>
             <ListItem
-              onClick={() => setMenuData("Shorts")}
+              onClick={() =>navigateTo("/shorts")}
               disablePadding
               sx={{ display: "block" }}
             >
@@ -249,12 +221,68 @@ export default function Sidebar() {
                 />
               </ListItemButton>
             </ListItem>
+            <ListItem
+              onClick={() => navigateTo("/feed")}
+              disablePadding
+              sx={{ display: "block" }}
+            >
+              <ListItemButton
+                sx={[
+                  {
+                    minHeight: 48,
+                    px: 2.5,
+                  },
+                  open
+                    ? {
+                        justifyContent: "initial",
+                      }
+                    : {
+                        justifyContent: "center",
+                      },
+                ]}
+              >
+                <ListItemIcon
+                  sx={[
+                    {
+                      minWidth: 0,
+                      justifyContent: "center",
+                    },
+                    open
+                      ? {
+                          mr: 3,
+                        }
+                      : {
+                          mr: "auto",
+                        },
+                  ]}
+                >
+                  <MailIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Feed"
+                  sx={[
+                    open
+                      ? {
+                          opacity: 1,
+                        }
+                      : {
+                          opacity: 0,
+                        },
+                  ]}
+                />
+              </ListItemButton>
+            </ListItem>
           </List>
         </Drawer>
-        <Box component="main" sx={{ flexGrow: 1, bgcolor:"rgb(248,249,250)"}}>
+        {/* <Box component="main" sx={{ flexGrow: 1, bgcolor:"white"}}>
+         
           {menuData === "BlogSection" && <BlogSection />}
           {menuData === "Shorts" && <Shorts />}
-        </Box>
+          {menuData === "Feed" && <Feed/>}
+
+         
+          
+        </Box> */}
       </Box>
     </>
   );

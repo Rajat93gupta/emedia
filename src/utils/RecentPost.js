@@ -11,6 +11,7 @@ export const RecentPost = [
       id: 1,
       image: "https://images.unsplash.com/photo-1557800636-894a64c1696f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
       description: "UI vs. UX: What’s the difference?",
+      description: "UI vs. UX: What’s the difference?",
       time: "9 August 2022",
       descritpion:"Completely formulate integrated methods Globally maintain multifunctional",
       userimage:userimage,

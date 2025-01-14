@@ -5,7 +5,7 @@ import {
   TextField,
   Button,
   Typography,
-  Grid,
+  Grid2,
   useTheme,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -29,7 +29,7 @@ export default function Login() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid
+      <Grid2
         container
         style={{
           height: "100vh",
@@ -38,16 +38,16 @@ export default function Login() {
         }}
       >
         {/* Image Section */}
-        <Grid item xs={12} md={6}>
+        <Grid2 item xs={12} md={6}>
           <Box
             component="img"
             src="/cover.png"
             sx={{ height: "100%", width: "100%", objectFit: "cover" }}
           />
-        </Grid>
+        </Grid2>
 
         {/* Form Section */}
-        <Grid
+        <Grid2
           item
           xs={12}
           md={6}
@@ -133,8 +133,8 @@ export default function Login() {
               Don't have an account? <a href="#">Sign Up</a>
             </Typography>
           </Box>
-        </Grid>
-      </Grid>
+        </Grid2>
+      </Grid2>
     </ThemeProvider>
   );
 }
